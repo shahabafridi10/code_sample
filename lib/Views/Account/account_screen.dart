@@ -50,7 +50,7 @@ class AccountScreen extends StatelessWidget {
                           Text("myname@gmail.com",
                               style: AppTextThemes.normal_desc_theme),
                           SizedBox(height: 2),
-                          Text("07XXXXXXXX",
+                          Text("07XXXXXXXX@@@",
                               style: AppTextThemes.normal_desc_theme),
                         ],
                       ),
