@@ -29,69 +29,82 @@ class ProductCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(5.0),
-          bottomRight: Radius.circular(5.0),
-        ),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border(
-              top: BorderSide(color: Colors.transparent),
-              left: BorderSide(color: AppColors.kCustomGreyColor),
-              right: BorderSide(color: AppColors.kCustomGreyColor),
-              bottom: BorderSide(color: AppColors.kCustomGreyColor),
-            ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(5.0),
+            bottomRight: Radius.circular(5.0),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Product Image
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.fill,
-                  height: 140,
-                  width: double.infinity,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                top: BorderSide(color: Colors.transparent),
+                left: BorderSide(color: AppColors.kCustomGreyColor),
+                right: BorderSide(color: AppColors.kCustomGreyColor),
+                bottom: BorderSide(color: AppColors.kCustomGreyColor),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Product Image
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10.0),
+                  child: Image.network(
+                    imageUrl,
+                    fit: BoxFit.fill,
+                    height: 140,
+                    width: double.infinity,
+                  ),
+                  //
                 ),
-               //
-              ),
 
-              // Title & Price Row
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                      width: MediaQuery.sizeOf(context).width/2,
-                      child: Text(title, style: AppTextThemes.post_title_theme, overflow: TextOverflow.ellipsis,)),
-                  Text('\$${price.toStringAsFixed(0)}', style: AppTextThemes.post_title_theme),
-                ],
-              ),
-
-              // Rating Row
-              Padding(
-                padding: const EdgeInsets.only(top: 4, bottom: 8.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                // Title & Price Row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(double.parse(rating.toStringAsFixed(1)).toString() , style: AppTextThemes.post_rating_theme),
-                   RatingBarWidget(rating: rating),
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width / 2,
+                      child: Text(
+                        title,
+                        style: AppTextThemes.post_title_theme,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    Text(
+                      '\$${price.toStringAsFixed(0)}',
+                      style: AppTextThemes.post_title_theme,
+                    ),
                   ],
                 ),
-              ),
 
+                // Rating Row
+                Padding(
+                  padding: const EdgeInsets.only(top: 4, bottom: 8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        double.parse(rating.toStringAsFixed(1)).toString(),
+                        style: AppTextThemes.post_rating_theme,
+                      ),
+                      RatingBarWidget(rating: rating),
+                    ],
+                  ),
+                ),
 
-              // Brand & Category
-              Text('By $brand', style: AppTextThemes.search_found_theme),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 20.0),
-                child: Text(category, style: AppTextThemes.post_hint_theme),
-              ),
-            ],
+                // Brand & Category
+                Text('By $brand', style: AppTextThemes.search_found_theme),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 20.0),
+                  child: Text(category, style: AppTextThemes.post_hint_theme),
+                ),
+              ],
+            ),
           ),
         ),
       ),

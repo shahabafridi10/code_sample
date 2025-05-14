@@ -15,7 +15,7 @@ class AccountScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-                Center(
+              Center(
                 child: Text(
                   "Person",
                   style: AppTextThemes.profileDisplay_theme,
@@ -43,20 +43,24 @@ class AccountScreen extends StatelessWidget {
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children:   [
-                          Text("Shahab Afridi",
-                              style: AppTextThemes.display_medium_theme),
+                        children: [
+                          Text(
+                            "Shahab Afridi",
+                            style: AppTextThemes.display_medium_theme,
+                          ),
                           SizedBox(height: 4),
-                          Text("myname@gmail.com",
-                              style: AppTextThemes.normal_desc_theme),
+                          Text(
+                            "myname@gmail.com",
+                            style: AppTextThemes.normal_desc_theme,
+                          ),
                           SizedBox(height: 2),
-                          Text("07XXXXXXXX@@@",
-                              style: AppTextThemes.normal_desc_theme),
+                          Text(
+                            "07XXXXXXXX@@@",
+                            style: AppTextThemes.normal_desc_theme,
+                          ),
                         ],
                       ),
                     ),
-
-
                   ],
                 ),
               ),
