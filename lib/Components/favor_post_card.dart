@@ -31,7 +31,7 @@ class FavorPostCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 5),
+      padding: EdgeInsets.symmetric(vertical: 10),
       child: InkWell(
         onTap: onTapDetail,
         child: ClipRRect(

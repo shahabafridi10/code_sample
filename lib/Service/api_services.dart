@@ -74,7 +74,7 @@ class ApiServices {
       if (response.statusCode == 200) {
         var getResponce=await response.stream.bytesToString();
         var decoded=jsonDecode(getResponce);
-         print('decoded DEtail  product Api :: $decoded');
+         // print('decoded DEtail  product Api :: $decoded');
 
         return decoded;
       }

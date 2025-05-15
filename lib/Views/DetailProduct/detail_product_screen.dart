@@ -76,10 +76,24 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                           children: [
                             Text(AppConstants.detProduct, style: AppTextThemes.black_post_title_theme,),
                             InkWell(
-                                onTap:(){
-                                  provider.addToFavorList(widget.id);
-                                },
-                                child: Image.asset(provider.favouriteList.contains(widget.id)?AssetPaths.redFavor:AssetPaths.favor, height: 25,width: 25,)),
+                              onTap: () {
+                                provider.addToFavorList(
+                                  id: widget.id,
+                                  name: provider.detailProductData!.title.toString(),
+                                  rating: provider.detailProductData!.rating!,
+                                  price: provider.detailProductData!.price!,
+                                  image: provider.detailProductData!.thumbnail.toString(),
+                                );
+                              },
+                              child: Image.asset(
+                                provider.favouriteList.any((item) => item.id == widget.id)
+                                    ? AssetPaths.redFavor
+                                    : AssetPaths.favor,
+                                height: 25,
+                                width: 25,
+                              ),
+                            )
+
                           ],
                         ),
                       ),

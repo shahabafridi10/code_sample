@@ -21,7 +21,6 @@ class FavouriteScreen extends StatefulWidget {
 }
 
 class _FavouriteScreenState extends State<FavouriteScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +30,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
       body: Consumer<DetailProductProvider>(
         builder: (
           BuildContext context,
-            DetailProductProvider provider,
+          DetailProductProvider provider,
           Widget? child,
         ) {
           return Container(
@@ -39,38 +38,43 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
             child: Column(
               children: [
                 SearchBarComponent(
-                  onChanged: (v) {
-
+                  onChanged: (query) {
+                    provider.filterFavourites(query);
                   },
                 ),
 
-
-                   ResultCountTextWidget(
-                      count: 0,
-                    ),
+                provider.filteredFavouriteList.length == provider.favouriteList.length ? SizedBox() : ResultCountTextWidget(count: provider.filteredFavouriteList.length),
 
                 Expanded(
-
                   child: ListView.builder(
-                    itemCount: provider.favouriteList.length ,
-                    shrinkWrap: true,
-
+                    itemCount: provider.filteredFavouriteList.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return  FavorPostCardWidget(
-                        imageUrl:
-                        "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp",
-                        title: "title",
-                        price: 0.0,
-                        rating: 1.2,
-                        brand: "brand",
+                      var favData = provider.filteredFavouriteList[index];
+                      return FavorPostCardWidget(
+                        imageUrl: favData.image,
+                        title: favData.name,
+                        price: favData.price,
+                        rating: favData.rating,
+                        brand: favData.name,
                         category: 'category',
-                        onTap: () { provider.removeFav(index); },
-                        onTapDetail: () {},
+                        onTap: () {
+                          provider.removeFav(favData.id) ;
+                        },
+                        onTapDetail: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder:
+                                  (context) => DetailProductScreen(
+                                id: favData.id,
+                              ),
+                            ),
+                          );
+                        },
                       );
                     },
-
                   ),
                 ),
+
               ],
             ),
           );
