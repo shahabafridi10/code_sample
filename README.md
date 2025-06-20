@@ -1,6 +1,6 @@
-# evencir_task
+# Flutter code sample
 
-A new Flutter project.
+Prfessional code sample.
 
 ## Getting Started
 
